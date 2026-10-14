@@ -117,6 +117,12 @@ body::after{
 .photo.frame.hover .tilt-in::after{opacity:1}
 .photo figcaption{position:absolute;left:0;top:calc(100% + 16px);font-family:var(--mono);font-size:18px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
 .photo figcaption::before{content:'— ';color:var(--red)}
+.photo-tag{position:absolute;left:14px;bottom:14px;z-index:2;padding:6px 10px;border-radius:7px;background:rgba(10,10,12,.78);font-family:var(--mono);font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);pointer-events:none;display:none}
+.has-img .photo-tag{display:block}
+.credit-line{position:absolute;right:120px;top:905px;margin:0;font-family:var(--mono);font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.help-box ol{margin:0;padding-left:1.4em;color:var(--soft);font-size:.92em}
+.help-box ol li{margin:.35em 0}
+.help-box a{color:#fff}
 
 .ph{
   position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
@@ -135,9 +141,9 @@ body::after{
 .bw-cover{left:640px;top:70px;font-size:1080px;-webkit-text-stroke:2px rgba(255,255,255,.09)}
 .g-cover{position:absolute;left:880px;top:80px;width:1050px;height:900px;border-radius:50%;
   background:radial-gradient(closest-side, rgba(255,45,45,.42), rgba(255,45,45,.12) 55%, transparent 100%);filter:blur(10px)}
-.p-cover{left:860px;top:150px;width:1060px;height:760px}
+.p-cover{left:860px;top:150px;width:1060px;height:760px;--rot:9deg}
 .p-cover .float{width:100%;height:100%;animation:float 7s ease-in-out infinite}
-@keyframes float{0%,100%{transform:translateY(0) rotate(-11deg)}50%{transform:translateY(-22px) rotate(-9deg)}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(var(--rot,-11deg))}50%{transform:translateY(-22px) rotate(calc(var(--rot,-11deg) + 2deg))}}
 .slide:not(.is-active) .float{animation-play-state:paused}
 .cover-text{position:absolute;left:120px;top:200px;width:900px;height:760px;pointer-events:none}
 .cover-text .kicker{left:0;top:0}
@@ -454,7 +460,7 @@ body.editing #edit-bar{display:flex}
       <figure class="photo product tilt p-cover" data-anim="photo" data-delay="450">
         <div class="float"><div class="tilt-in">
           <img data-img="portada" alt="Nike Air Force 1">
-          <div class="ph" data-hint="Air Force 1 de costado, con la punta hacia la derecha. Ideal: PNG sin fondo."></div>
+          <div class="ph" data-hint="Air Force 1 de costado. Ideal: PNG sin fondo."></div>
         </div></div>
       </figure>
     </div>
@@ -526,7 +532,7 @@ body.editing #edit-bar{display:flex}
         <img data-img="original-1982" alt="Air Force 1 original de 1982">
         <div class="ph" data-hint="La Air Force 1 High original de 1982 (o un anuncio de esa época)."></div>
       </div>
-      <figcaption>Air Force 1 High · 1982</figcaption>
+      <figcaption>Air Force 1 High · edición 2017</figcaption>
     </figure>
 
     <aside class="notes" data-time="1:00">
@@ -674,27 +680,27 @@ body.editing #edit-bar{display:flex}
     <figure class="photo product tilt p-design" data-anim="photo" data-delay="250">
       <div class="tilt-in">
         <img data-img="diseno" alt="Air Force 1 de costado">
-        <div class="ph" data-hint="Air Force 1 de costado, punta hacia la derecha. Ideal: PNG sin fondo."></div>
+        <div class="ph" data-hint="Air Force 1 de costado. Ideal: PNG sin fondo."></div>
         <!-- Etiquetas: data-x y data-y son la posición del punto rojo (en % de la foto).
              Más fácil: en la presentación presiona E y arrástralas con el mouse. -->
         <div class="hotspots">
-          <div class="hs up" data-id="medallon" data-x="66" data-y="30">
+          <div class="hs up" data-id="medallon" data-x="33" data-y="42">
             <span class="hs-line"></span><span class="hs-dot"></span>
             <div class="hs-card"><span class="k">01</span><h4>Medallón AF-1</h4><p>Placa en los cordones grabada "AF-1 '82".</p></div>
           </div>
-          <div class="hs up" data-id="cuero" data-x="38" data-y="44">
+          <div class="hs up" data-id="cuero" data-x="80.7" data-y="51.7">
             <span class="hs-line"></span><span class="hs-dot"></span>
             <div class="hs-card"><span class="k">02</span><h4>Cuero</h4><p>El material clásico de la parte de arriba.</p></div>
           </div>
-          <div class="hs down" data-id="puntera" data-x="84" data-y="54">
+          <div class="hs down" data-id="puntera" data-x="13.8" data-y="54.7">
             <span class="hs-line"></span><span class="hs-dot"></span>
             <div class="hs-card"><span class="k">03</span><h4>Puntera perforada</h4><p>Agujeritos para que el pie respire.</p></div>
           </div>
-          <div class="hs down" data-id="air" data-x="20" data-y="68">
+          <div class="hs down" data-id="air" data-x="86.6" data-y="75">
             <span class="hs-line"></span><span class="hs-dot"></span>
             <div class="hs-card"><span class="k">04</span><h4>Nike Air</h4><p>La cámara de aire va escondida en la suela.</p></div>
           </div>
-          <div class="hs down" data-id="pivote" data-x="55" data-y="76">
+          <div class="hs down" data-id="pivote" data-x="39.3" data-y="80.2">
             <span class="hs-line"></span><span class="hs-dot"></span>
             <div class="hs-card"><span class="k">05</span><h4>Suela de pivote</h4><p>Círculos para girar rápido en la cancha.</p></div>
           </div>
@@ -729,7 +735,7 @@ body.editing #edit-bar{display:flex}
     <article class="card c3" data-anim="up" data-delay="700">
       <figure class="photo frame tilt" data-anim="photo" data-delay="750"><div class="tilt-in"><img data-img="cultura-streetwear" alt="Streetwear"><div class="ph" data-hint="Streetwear: un look urbano con Air Force 1 blancas."></div></div></figure>
       <p class="card-cat">03 · Streetwear</p>
-      <p class="card-text">La <b>blanca total</b> se volvió un básico de la moda urbana.</p>
+      <p class="card-text">Un <b>básico</b> de la moda urbana, sobre todo la <b>blanca total</b>.</p>
     </article>
 
     <aside class="notes" data-time="1:00">
@@ -749,29 +755,30 @@ body.editing #edit-bar{display:flex}
     <p class="lead" data-anim="up" data-delay="500">Marcas y artistas que la reinventaron.</p>
     <article class="collab k1" data-anim="up" data-delay="350">
       <figure class="photo frame tilt" data-anim="photo" data-delay="400"><div class="tilt-in"><img data-img="collab-offwhite" alt="Off-White x Nike Air Force 1"><div class="ph" data-hint="Air Force 1 de Off-White (Virgil Abloh)."></div></div></figure>
-      <h3>Off-White</h3><span class="yr">2017 · Virgil Abloh</span>
-      <p>Parte de "The Ten", con textos impresos a la vista.</p>
+      <h3>Off-White</h3><span class="yr">Desde 2017 · Virgil Abloh</span>
+      <p>Precinto rojo y textos impresos. En la foto: la "MCA" (2019).</p>
     </article>
     <article class="collab k2" data-anim="up" data-delay="480">
-      <figure class="photo frame tilt" data-anim="photo" data-delay="530"><div class="tilt-in"><img data-img="collab-supreme" alt="Supreme x Nike Air Force 1"><div class="ph" data-hint="Air Force 1 de Supreme (logo rojo en el talón)."></div></div></figure>
+      <figure class="photo frame tilt" data-anim="photo" data-delay="530"><div class="tilt-in"><img data-img="collab-supreme" alt="Supreme x Nike Air Force 1"><div class="ph" data-hint="Air Force 1 de Supreme (logo rojo en el talón)."></div></div><span class="photo-tag">Foto: letrero Supreme</span></figure>
       <h3>Supreme</h3><span class="yr">2020 · Streetwear</span>
       <p>Blanca o negra, con su logo rojo en el talón.</p>
     </article>
     <article class="collab k3" data-anim="up" data-delay="610">
-      <figure class="photo frame tilt" data-anim="photo" data-delay="660"><div class="tilt-in"><img data-img="collab-louisvuitton" alt="Louis Vuitton x Nike Air Force 1"><div class="ph" data-hint="Air Force 1 de Louis Vuitton (Virgil Abloh)."></div></div></figure>
+      <figure class="photo frame tilt" data-anim="photo" data-delay="660"><div class="tilt-in"><img data-img="collab-louisvuitton" alt="Louis Vuitton x Nike Air Force 1"><div class="ph" data-hint="Air Force 1 de Louis Vuitton (Virgil Abloh)."></div></div><span class="photo-tag">Foto: tienda LV, Nueva York</span></figure>
       <h3>Louis Vuitton</h3><span class="yr">2022 · Lujo</span>
       <p>Diseñada por Virgil Abloh para la casa de moda francesa.</p>
     </article>
     <article class="collab k4" data-anim="up" data-delay="740">
-      <figure class="photo frame tilt" data-anim="photo" data-delay="790"><div class="tilt-in"><img data-img="collab-tiffany" alt="Tiffany &amp; Co. x Nike Air Force 1"><div class="ph" data-hint="Air Force 1 de Tiffany &amp; Co. (negra con Swoosh celeste)."></div></div></figure>
+      <figure class="photo frame tilt" data-anim="photo" data-delay="790"><div class="tilt-in"><img data-img="collab-tiffany" alt="Tiffany &amp; Co. x Nike Air Force 1"><div class="ph" data-hint="Air Force 1 de Tiffany &amp; Co. (negra con Swoosh celeste)."></div></div><span class="photo-tag">Foto: cajas Tiffany</span></figure>
       <h3>Tiffany &amp; Co.</h3><span class="yr">2023 · Joyería</span>
       <p>Gamuza negra con el Swoosh en azul Tiffany.</p>
     </article>
 
     <aside class="notes" data-time="0:50">
       <p>La Air Force 1 es como un lienzo en blanco, por eso muchas marcas y artistas la han reinventado.</p>
-      <p><strong>Off-White</strong>, de Virgil Abloh, la incluyó en 2017 en su colección "The Ten". <strong>Supreme</strong> lanzó en 2020 una versión blanca y otra negra con su logo rojo. <strong>Louis Vuitton</strong>, también con Virgil Abloh, la llevó al mundo del lujo en 2022. Y en 2023 la joyería <strong>Tiffany &amp; Co.</strong> hizo una versión negra con el Swoosh celeste y el número 1837, el año en que se fundó Tiffany.</p>
+      <p><strong>Off-White</strong>, de Virgil Abloh, la incluyó en 2017 en su colección "The Ten" (la foto muestra la versión "MCA" de 2019). <strong>Supreme</strong> lanzó en 2020 una versión blanca y otra negra con su logo rojo. <strong>Louis Vuitton</strong>, también con Virgil Abloh, la llevó al mundo del lujo en 2022. Y en 2023 la joyería <strong>Tiffany &amp; Co.</strong> hizo una versión negra con el Swoosh celeste y el número 1837, el año en que se fundó Tiffany.</p>
       <p>También hay versiones de <strong>Travis Scott</strong> y de <strong>NOCTA</strong>, la marca de Drake (2022).</p>
+      <p><em>(Ojo: las fotos de Supreme, Louis Vuitton y Tiffany muestran la marca —un letrero, una tienda y sus cajas—, no la zapatilla, porque no hay fotos libres de esas zapatillas.)</em></p>
     </aside>
   </section>
 
@@ -851,6 +858,7 @@ body.editing #edit-bar{display:flex}
     <h2 class="title t-quote" data-delay="100">Más de 40 años después,<br><em>sigue despegando.</em></h2>
     <h2 class="title t-ask" data-delay="700"><em>¿</em>Preguntas<em>?</em></h2>
     <p class="thanks" data-anim="up" data-delay="1300">Gracias <span>·</span> <strong class="js-name">Tu Nombre</strong></p>
+    <p class="credit-line" data-anim="fade" data-delay="1600">Fotos: Flickr y Wikimedia Commons (CC) · créditos: tecla H</p>
 
     <aside class="notes" data-time="0:20">
       <p>Para terminar: la Air Force 1 nació en 1982 para jugar baloncesto, casi desaparece en 1984, y más de 40 años después <strong>sigue despegando</strong>.</p>
@@ -891,6 +899,8 @@ body.editing #edit-bar{display:flex}
     </table>
     <h3>Fotos (carpeta "imagenes")</h3>
     <div id="photo-status">Revisando fotos…</div>
+    <h3>Créditos de las fotos</h3>
+    <ol id="credits"></ol>
   </div>
 </div>
 
@@ -987,6 +997,36 @@ body.editing #edit-bar{display:flex}
     box.innerHTML = html + '</ul><p style="color:var(--muted)">También sirven .png, .jpeg o .webp.</p>';
   }
   function escapeHtml(s){ return String(s || '').replace(/[&<>"]/g, function(c){ return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]; }); }
+
+  /* ---------------- Créditos de las fotos incluidas ----------------
+     Si cambias una foto por otra tuya, puedes borrar su línea de aquí. */
+  var CREDITOS = [
+    ['portada', 'Nike Air Force 1', 'Erik Drost', 'CC BY 2.0', 'https://www.flickr.com/photos/edrost88/51939270613', 'sin fondo'],
+    ['avion', 'Air Force One departs Maxwell', 'Donna Burnett, U.S. Air Force', 'Dominio público', 'https://commons.wikimedia.org/wiki/File:Air_Force_One_departs_Maxwell_150307-F-ZI558-0861.jpg', ''],
+    ['original-1982', 'Nike Air Force 1 Hi Just Don', 'HI 622', 'CC BY-SA 4.0', 'https://commons.wikimedia.org/wiki/File:Nike_Air_Force_1_Hi_Just_Don.jpg', ''],
+    ['modelo-low', 'Nike AF1 Bespokes by Kevin Doohan (inside)', 'Kevin Doohan', 'CC BY 2.0', 'https://www.flickr.com/photos/kdoohan/4844639942', 'sin fondo'],
+    ['modelo-mid', 'Air Force 1', 'Stefano A.', 'CC BY 2.0', 'https://www.flickr.com/photos/joesixpac/3199944288', 'sin fondo'],
+    ['modelo-high', 'Nike Air Force One Hi - Flux Wheat 2015', 'abdelazar', 'CC BY-NC-SA 2.0', 'https://www.flickr.com/photos/abdelazar/23790422510', 'sin fondo'],
+    ['diseno', 'Nike Air Force 1', 'Erik Drost', 'CC BY 2.0', 'https://www.flickr.com/photos/edrost88/51939271563', 'sin fondo'],
+    ['suela', 'Dessus et dessous de l\'AF1', 'HI 622', 'CC BY-SA 4.0', 'https://commons.wikimedia.org/wiki/File:Dessus_et_dessous_de_l%27AF1.jpg', 'recortada'],
+    ['cultura-baloncesto', 'Sunset at Venice Beach Basketball Courts - Los Angeles CA 2', 'ChrisGoldNY', 'CC BY-NC 2.0', 'https://www.flickr.com/photos/chrisgold/7916249448', ''],
+    ['cultura-hiphop', 'Nelly', 'reeb0k2008 (Flickr)', 'CC BY 2.0', 'https://commons.wikimedia.org/wiki/File:Nelly.jpg', 'recortada'],
+    ['cultura-streetwear', 'WDYWT 05-22-10', 'Kid_SBTG (crqalba.jpeg)', 'CC BY 2.0', 'https://www.flickr.com/photos/killahchris/4667581741', ''],
+    ['collab-offwhite', 'Off-White x Nike Air Force 1 "MCA"', 'Puppyc', 'CC BY-SA 4.0', 'https://commons.wikimedia.org/wiki/File:Off-White_x_Nike_Air_Force_1_%22MCA%22.png', ''],
+    ['collab-supreme', 'Supreme London', 'cchana', 'CC BY-SA 2.0', 'https://www.flickr.com/photos/cchana/24401721995', ''],
+    ['collab-louisvuitton', 'Louis Vuitton, Manhattan – umělecká fasáda obchodu během rekonstrukce', 'Ludmila Zellner Rotbauerová', 'CC BY-SA 4.0', 'https://commons.wikimedia.org/wiki/File:Louis_Vuitton,_Manhattan_%E2%80%93_um%C4%9Bleck%C3%A1_fas%C3%A1da_obchodu_b%C4%9Bhem_rekonstrukce.jpg', 'recortada'],
+    ['collab-tiffany', 'Tiffany blue box 1', 'AdrianaGórak', 'CC BY-SA 3.0', 'https://commons.wikimedia.org/wiki/File:Tiffany_blue_box_1.jpg', ''],
+    ['clasico', 'Nike Air Force 1 One Sneaker boy', 'vanes_hud', 'CC BY 2.0', 'https://www.flickr.com/photos/svenjajan/20058180715', ''],
+    ['cierre', 'Air Force One', 'André P.', 'CC BY-NC 2.0', 'https://www.flickr.com/photos/a_andre_p/5358465180', 'sin fondo']
+  ];
+  (function(){
+    var ol = document.getElementById('credits');
+    if (!ol) return;
+    ol.innerHTML = CREDITOS.map(function(c){
+      return '<li><code>' + c[0] + '</code> — "' + escapeHtml(c[1]) + '", ' + escapeHtml(c[2]) + ' · ' + c[3] +
+        (c[5] ? ' · ' + c[5] : '') + ' · <a href="' + c[4] + '" target="_blank" rel="noopener">fuente</a></li>';
+    }).join('') + '<li style="list-style:none;color:var(--muted)">Las versiones recortadas o sin fondo se comparten con la misma licencia que la original.</li>';
+  })();
 
   /* ---------------- Partículas del diagrama Nike Air ---------------- */
   (function(){
@@ -1338,7 +1378,7 @@ body.editing #edit-bar{display:flex}
   document.addEventListener('click', function(e){
     if (suppressClick) { suppressClick = false; return; }
     if (blackout.classList.contains('on')) { blackout.classList.remove('on'); return; }
-    if (helpEl.classList.contains('open')) { toggleHelp(false); return; }
+    if (helpEl.classList.contains('open')) { if (!e.target.closest('.help-box')) toggleHelp(false); return; }
     if (editing) return;
     var go = e.target.closest('[data-go]');
     if (go) { goTo(+go.dataset.go - 1); return; }
