@@ -1,0 +1,32 @@
+FOTOS PARA LA PRESENTACIÓN "AIR FORCE 1"
+========================================
+
+Guarda tus fotos en ESTA carpeta (imagenes), con estos nombres EXACTOS
+(en minúsculas, sin tildes ni espacios). Sirve .jpg, .png, .jpeg o .webp.
+Si falta una foto, la presentación muestra un recuadro "Foto aquí".
+
+Consejo: para las que dicen "PNG sin fondo", busca en Google
+"air force 1 png" o quítale el fondo a tu foto en remove.bg.
+Así la zapatilla "flota" sobre el fondo oscuro.
+
+Nombre del archivo         Qué foto poner                                       Diapositiva
+-------------------------  ---------------------------------------------------  -----------
+portada.png                AF1 de costado, punta hacia la derecha (sin fondo)   1 Portada
+avion.jpg                  El avión presidencial Air Force One                  3 Origen
+original-1982.jpg          La AF1 High original de 1982 o un anuncio antiguo    3 Origen
+modelo-low.png             Air Force 1 Low de costado (sin fondo)               6 Modelos
+modelo-mid.png             Air Force 1 Mid de costado (sin fondo)               6 Modelos
+modelo-high.png            Air Force 1 High de costado (sin fondo)              6 Modelos
+diseno.png                 AF1 de costado, punta hacia la derecha (sin fondo)   7 Diseño
+suela.jpg                  La suela vista desde abajo (se ven los círculos)     7 Diseño
+cultura-baloncesto.jpg     Baloncesto: jugador o cancha con AF1                 8 Cultura
+cultura-hiphop.jpg         Hip hop: artista o escena urbana con AF1             8 Cultura
+cultura-streetwear.jpg     Look urbano con AF1 blancas                          8 Cultura
+collab-offwhite.jpg        AF1 de Off-White (Virgil Abloh)                      9 Colaboraciones
+collab-supreme.jpg         AF1 de Supreme (logo rojo en el talón)               9 Colaboraciones
+collab-louisvuitton.jpg    AF1 de Louis Vuitton (Virgil Abloh)                  9 Colaboraciones
+collab-tiffany.jpg         AF1 de Tiffany & Co. (negra con Swoosh celeste)      9 Colaboraciones
+clasico.jpg                Foto de estilo (lifestyle) con AF1                   11 Un clásico
+cierre.png                 Tu foto favorita de la AF1 (sin fondo)               12 Cierre
+
+Para revisar qué fotos faltan: abre la presentación y presiona la tecla H.
