@@ -1,6 +1,9 @@
 FOTOS DE LA PRESENTACIÓN "AIR FORCE 1"
 ======================================
 
+IMPORTANTE: las fotos ya vienen DENTRO de presentacion.html, así que funciona
+aunque abras el archivo solo. Esta carpeta sirve para cambiar fotos.
+
 Esta carpeta ya trae las 17 fotos puestas, con licencia libre (Creative Commons
 o dominio público) sacadas de Flickr y Wikimedia Commons. Los créditos de cada
 foto están en CREDITOS.txt y dentro de la presentación (tecla H).
