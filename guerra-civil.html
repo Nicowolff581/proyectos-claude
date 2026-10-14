@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Civil War & Reconstruction</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#0f1726; --paper:#f3ede1; --muted:#aab3c2; --red:#d9343f; --gold:#d6a54a; }
+  * { box-sizing:border-box; }
+  html, body { margin:0; height:100%; overflow:hidden; background:var(--bg); color:var(--paper);
+    font-family:Inter, system-ui, Arial, sans-serif; cursor:pointer; user-select:none; }
+
+  .slide { position:absolute; inset:0; z-index:0; padding:9vh 8vw; display:flex; flex-direction:column; justify-content:center;
+    opacity:0; transform:translateX(60px); transition:opacity .7s ease, transform .7s ease; pointer-events:none; }
+  .slide.active { opacity:1; transform:none; }
+  .slide.past { transform:translateX(-60px); }
+
+  /* Año gigante de fondo */
+  .slide::after { content:attr(data-year); position:absolute; right:-1vw; bottom:-4vh; z-index:-1;
+    font:900 21vw/1 "Playfair Display", Georgia, serif; color:transparent; -webkit-text-stroke:2px rgba(243,237,225,.12); }
+
+  .tag { margin:0 0 1.5vh; color:var(--red); font-weight:800; letter-spacing:.2em; text-transform:uppercase;
+    font-size:clamp(12px,1.3vw,20px); }
+  h1, h2 { margin:0 0 4vh; font-family:"Playfair Display", Georgia, serif; font-weight:900; line-height:1.02; }
+  h1 { font-size:clamp(44px,8vw,130px); }
+  h2 { font-size:clamp(34px,5vw,84px); max-width:16ch; }
+  h1 em, h2 em { color:var(--gold); font-style:normal; }
+  p.lead { max-width:46ch; font-size:clamp(16px,1.8vw,30px); line-height:1.45; color:var(--muted); margin:0 0 5vh; }
+  .by { font-size:clamp(14px,1.4vw,22px); color:var(--muted); }
+  .by b { color:var(--paper); border-bottom:3px solid var(--red); }
+
+  ul { list-style:none; margin:0; padding:0; max-width:60ch; }
+  li { position:relative; padding-left:2.2em; margin:0 0 3vh; font-size:clamp(16px,1.9vw,32px); line-height:1.35;
+    opacity:0; transform:translateY(16px); transition:all .6s ease; }
+  li::before { content:""; position:absolute; left:0; top:.5em; width:1.1em; height:3px; background:var(--red); }
+  li b { color:#fff; }
+  .active li { opacity:1; transform:none; }
+  .active li:nth-child(1) { transition-delay:.3s; }
+  .active li:nth-child(2) { transition-delay:.5s; }
+  .active li:nth-child(3) { transition-delay:.7s; }
+
+  /* Tarjetas de las 3 enmiendas */
+  .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:2vw; }
+  .card { border-top:4px solid var(--gold); background:rgba(243,237,225,.05); padding:3vh 1.6vw; border-radius:6px; }
+  .card big { display:block; font:900 clamp(34px,5vw,80px)/1 "Playfair Display", Georgia, serif; color:var(--gold); }
+  .card span { display:block; margin:1vh 0 1.5vh; color:var(--red); font-weight:800; letter-spacing:.15em; }
+  .card p { margin:0; font-size:clamp(14px,1.6vw,26px); line-height:1.35; }
+
+  #bar { position:fixed; top:0; left:0; height:5px; background:var(--red); transition:width .6s ease; }
+  #num { position:fixed; right:3vw; bottom:3vh; color:var(--muted); font-weight:600; font-size:clamp(12px,1.2vw,18px); }
+</style>
+</head>
+<body>
+
+<!-- 1 · PORTADA -->
+<section class="slide" data-year="1861">
+  <p class="tag">U.S. History · 1861–1877</p>
+  <h1>Civil War &amp; <em>Reconstruction</em></h1>
+  <p class="lead">The Union faces secession and civil war. Emancipation and new amendments open a contested new chapter in citizenship.</p>
+  <!-- ✏️ Cambia "Your Name" por tu nombre -->
+  <p class="by">Presented by <b>Your Name</b></p>
+</section>
+
+<!-- 2 · SECESIÓN -->
+<section class="slide" data-year="1860">
+  <p class="tag">1860–1861</p>
+  <h2>Secession and the <em>Confederacy</em></h2>
+  <ul>
+    <li>After <b>Lincoln’s election</b> (Nov 1860), South Carolina is the first state to secede.</li>
+    <li>In <b>Feb 1861</b>, seven states form the Confederate States of America. Its constitution protects slavery; <b>Jefferson Davis</b> is president.</li>
+    <li>Four more states join after the fighting starts: <b>11 Confederate states</b> in total.</li>
+  </ul>
+</section>
+
+<!-- 3 · LA GUERRA -->
+<section class="slide" data-year="1863">
+  <p class="tag">1861–1863</p>
+  <h2>A Nation <em>at War</em></h2>
+  <ul>
+    <li><b>April 12, 1861:</b> Confederates fire on Fort Sumter. The war begins.</li>
+    <li><b>Antietam (1862):</b> about 23,000 casualties, the bloodiest single day in U.S. history.</li>
+    <li><b>July 1863:</b> Gettysburg (about 51,000 casualties) and Vicksburg turn the tide. The Union controls the Mississippi.</li>
+  </ul>
+</section>
+
+<!-- 4 · PROCLAMACIÓN DE EMANCIPACIÓN -->
+<section class="slide" data-year="1863">
+  <p class="tag">January 1, 1863</p>
+  <h2>The Emancipation <em>Proclamation</em></h2>
+  <ul>
+    <li>Declares enslaved people in <b>Confederate-held areas</b> free.</li>
+    <li>It did not cover loyal border states and could not yet be enforced in the South.</li>
+    <li>It turns the war into a fight to <b>end slavery</b>, not only to save the Union.</li>
+  </ul>
+</section>
+
+<!-- 5 · LINCOLN -->
+<section class="slide" data-year="1865">
+  <p class="tag">1863–1865</p>
+  <h2>Lincoln’s Words and <em>Final Days</em></h2>
+  <ul>
+    <li><b>Nov 1863:</b> the Gettysburg Address. About two minutes long, it is one of the most famous American speeches.</li>
+    <li><b>April 9, 1865:</b> Lee surrenders to Grant at Appomattox Court House.</li>
+    <li><b>April 14, 1865:</b> John Wilkes Booth shoots Lincoln at Ford’s Theatre, and Andrew Johnson inherits Reconstruction.</li>
+  </ul>
+</section>
+
+<!-- 6 · ENMIENDAS -->
+<section class="slide" data-year="1870">
+  <p class="tag">1865–1870</p>
+  <h2>Freedom Written <em>into Law</em></h2>
+  <div class="cards">
+    <div class="card"><big>13th</big><span>1865</span><p>Abolishes slavery, except as punishment for a crime.</p></div>
+    <div class="card"><big>14th</big><span>1868</span><p>Citizenship for all people born or naturalized in the U.S., with equal protection of the laws.</p></div>
+    <div class="card"><big>15th</big><span>1870</span><p>The right to vote cannot be denied because of race, color or previous servitude.</p></div>
+  </div>
+</section>
+
+<!-- 7 · RECONSTRUCCIÓN -->
+<section class="slide" data-year="1877">
+  <p class="tag">1865–1877</p>
+  <h2>The Promise of <em>Reconstruction</em></h2>
+  <ul>
+    <li>The <b>Freedmen’s Bureau</b> (1865) gives food, medical care and schools to freed people.</li>
+    <li>Progress meets <b>violent opposition</b>, and Northern support fades in the 1870s.</li>
+    <li><b>Compromise of 1877:</b> Hayes becomes president, federal troops leave the South, and Reconstruction ends.</li>
+  </ul>
+</section>
+
+<!-- 8 · CIERRE -->
+<section class="slide" data-year="1877">
+  <p class="tag">1861–1877</p>
+  <h1>A war that ended slavery, a peace that left <em>equality unfinished.</em></h1>
+  <p class="lead">Thank you. Any questions?</p>
+</section>
+
+<div id="bar"></div>
+<div id="num"></div>
+
+<script>
+  // Navegación: flechas, espacio, clic o deslizar el dedo. F = pantalla completa.
+  const slides = document.querySelectorAll('.slide');
+  let i = 0;
+
+  function show(n) {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((s, k) => { s.classList.toggle('active', k === i); s.classList.toggle('past', k < i); });
+    document.getElementById('bar').style.width = (i + 1) / slides.length * 100 + '%';
+    document.getElementById('num').textContent = (i + 1) + ' / ' + slides.length;
+  }
+
+  document.addEventListener('keydown', e => {
+    if (['ArrowRight', 'ArrowDown', ' ', 'PageDown', 'Enter'].includes(e.key)) { e.preventDefault(); show(i + 1); }
+    if (['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); show(i - 1); }
+    if (e.key === 'f' || e.key === 'F') {
+      const el = document.documentElement;
+      document.fullscreenElement ? document.exitFullscreen() : (el.requestFullscreen || el.webkitRequestFullscreen).call(el);
+    }
+  });
+  document.addEventListener('click', () => show(i + 1));
+
+  let x0 = null;
+  document.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; });
+  document.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 50) show(dx < 0 ? i + 1 : i - 1);
+  });
+
+  show(0);
+</script>
+</body>
+</html>
