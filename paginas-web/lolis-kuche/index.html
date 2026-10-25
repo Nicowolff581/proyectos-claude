@@ -39,12 +39,17 @@
         <img src="logo-mark.png" alt="" class="brand__logo" width="44" height="44" data-fallback="hide">
         <span class="brand__name">Loli's Küche</span>
       </a>
+      <a href="#pedidos" class="cart-link" id="cartLink" aria-label="Tu carrito: 0 artículos">
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 8h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9L5 8Zm4 0V6.5a3 3 0 0 1 6 0V8"/></svg>
+        <span class="cart-link__text">Carrito</span>
+        <span class="cart-link__count" id="cartCount">0</span>
+      </a>
       <button class="topbar__toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Abrir menú">
         <span></span><span></span><span></span>
       </button>
       <nav class="topbar__nav" id="navMenu" aria-label="Principal">
         <a href="#nuestra-historia">Historia</a>
-        <a href="#menu">Menú</a>
+        <a href="#tienda">Tienda</a>
         <a href="#pedidos">Pedidos</a>
         <a href="#contacto">Contacto</a>
         <a href="#pedidos" class="btn btn--sky btn--sm">Pedir</a>
@@ -67,7 +72,7 @@
         <p class="hero__lead">La cocina del abuelo Loli, ahora en manos de su familia. Todas nuestras salchichas vienen <strong>precocidas y empacadas al vacío</strong>, listas para calentar y servir.</p>
         <div class="hero__actions">
           <a href="#pedidos" class="btn btn--blue">Hacer un pedido</a>
-          <a href="#menu" class="btn btn--ghost">Ver el menú</a>
+          <a href="#tienda" class="btn btn--ghost">Ver las salchichas</a>
         </div>
         <ul class="badges">
           <li>8 variedades</li>
@@ -118,122 +123,195 @@
 
     <div class="rauten" aria-hidden="true"></div>
 
-    <!-- ============ MENÚ ============ -->
-    <section class="section section--pale" id="menu">
+    <!-- ============ TIENDA ============ -->
+    <section class="section section--pale" id="tienda">
       <div class="wrap">
-        <header class="section__head">
-          <p class="eyebrow">Speisekarte</p>
-          <h2 class="section__title">Menú</h2>
-          <p class="section__sub">Todas nuestras salchichas vienen precocidas y empacadas al vacío. Usa los botones + y − para armar tu pedido.</p>
+        <nav class="crumbs" aria-label="Ruta"><a href="#inicio">Inicio</a><span aria-hidden="true">/</span><span>Salchichas</span></nav>
+        <header class="shop__head">
+          <div>
+            <h2 class="section__title">Salchichas</h2>
+            <p class="shop__sub">Todas vienen precocidas y empacadas al vacío. Añádelas al carrito y envía tu pedido por WhatsApp.</p>
+          </div>
         </header>
 
-        <div class="menu-group">
-          <h3 class="menu-group__title">Paquetes de 400 g <span>unidades de 100 g</span></h3>
-          <ul class="menu-list">
-            <li class="item" data-name="La Macha" data-price="26000">
-              <div class="item__info">
-                <h4>La Macha</h4>
-                <p>100 % cerdo magro · 4 unidades</p>
-              </div>
-              <p class="item__price">$26.000</p>
-              <div class="qty" role="group" aria-label="Cantidad de La Macha">
-                <button type="button" class="qty__btn" data-step="-1" aria-label="Quitar un paquete de La Macha">−</button>
-                <output class="qty__val">0</output>
-                <button type="button" class="qty__btn" data-step="1" aria-label="Agregar un paquete de La Macha">+</button>
-              </div>
-            </li>
-            <li class="item" data-name="La Macha Ahumada" data-price="30000">
-              <div class="item__info">
-                <h4>La Macha Ahumada</h4>
-                <p>100 % cerdo magro, ahumada · 4 unidades</p>
-              </div>
-              <p class="item__price">$30.000</p>
-              <div class="qty" role="group" aria-label="Cantidad de La Macha Ahumada">
-                <button type="button" class="qty__btn" data-step="-1" aria-label="Quitar un paquete de La Macha Ahumada">−</button>
-                <output class="qty__val">0</output>
-                <button type="button" class="qty__btn" data-step="1" aria-label="Agregar un paquete de La Macha Ahumada">+</button>
-              </div>
-            </li>
-            <li class="item" data-name="Merguez" data-price="40000">
-              <div class="item__info">
-                <h4>Merguez</h4>
-                <p>Cordero y res, en tripa natural de cordero · 400 g</p>
-              </div>
-              <p class="item__price">$40.000</p>
-              <div class="qty" role="group" aria-label="Cantidad de Merguez">
-                <button type="button" class="qty__btn" data-step="-1" aria-label="Quitar un paquete de Merguez">−</button>
-                <output class="qty__val">0</output>
-                <button type="button" class="qty__btn" data-step="1" aria-label="Agregar un paquete de Merguez">+</button>
-              </div>
-            </li>
-          </ul>
+        <div class="shop__bar">
+          <div class="chips" role="group" aria-label="Filtrar por presentación">
+            <button type="button" class="chip is-active" data-filter="all" aria-pressed="true">Todas</button>
+            <button type="button" class="chip" data-filter="3" aria-pressed="false">Paquetes de 3</button>
+            <button type="button" class="chip" data-filter="400" aria-pressed="false">Paquetes de 400 g</button>
+          </div>
+          <div class="shop__tools">
+            <p class="shop__count" id="shopCount" aria-live="polite">8 productos</p>
+            <label class="sort">
+              <span>Ordenar por</span>
+              <select id="sortBy">
+                <option value="relevance">Más relevantes</option>
+                <option value="price-asc">Precio, menor a mayor</option>
+                <option value="price-desc">Precio, mayor a menor</option>
+                <option value="az">Alfabéticamente, A-Z</option>
+                <option value="za">Alfabéticamente, Z-A</option>
+              </select>
+            </label>
+          </div>
         </div>
 
-        <div class="menu-group">
-          <h3 class="menu-group__title">Paquetes de 3 unidades <span>unidades de 150 g</span></h3>
-          <ul class="menu-list">
-            <li class="item" data-name="Berna" data-price="35000">
-              <div class="item__info">
-                <h4>Berna</h4>
-                <p>Ternera, cerdo, queso y tocineta</p>
+        <ul class="grid" id="productGrid">
+            <li class="item card" data-name="Blanca" data-price="30000" data-group="3" data-order="0">
+              <div class="card__media">
+                <img src="fotos/blanca.jpg" alt="Paquete al vacío con 3 salchichas Blanca" width="800" height="800" loading="lazy">
               </div>
-              <p class="item__price">$35.000</p>
-              <div class="qty" role="group" aria-label="Cantidad de Berna">
-                <button type="button" class="qty__btn" data-step="-1" aria-label="Quitar un paquete de Berna">−</button>
-                <output class="qty__val">0</output>
-                <button type="button" class="qty__btn" data-step="1" aria-label="Agregar un paquete de Berna">+</button>
+              <div class="card__body">
+                <h3 class="card__title">Blanca</h3>
+                <p class="card__desc">Ternera y cerdo</p>
+                <p class="card__meta">3 unidades · 150 g c/u</p>
+                <p class="card__price">$30.000</p>
               </div>
-            </li>
-            <li class="item" data-name="Blanca" data-price="30000">
-              <div class="item__info">
-                <h4>Blanca</h4>
-                <p>Ternera y cerdo</p>
-              </div>
-              <p class="item__price">$30.000</p>
-              <div class="qty" role="group" aria-label="Cantidad de Blanca">
-                <button type="button" class="qty__btn" data-step="-1" aria-label="Quitar un paquete de Blanca">−</button>
-                <output class="qty__val">0</output>
-                <button type="button" class="qty__btn" data-step="1" aria-label="Agregar un paquete de Blanca">+</button>
+              <div class="card__actions">
+                <button type="button" class="btn btn--blue btn--block card__add">Añadir al carrito</button>
+                <div class="qty" role="group" aria-label="Cantidad de Blanca" hidden>
+                  <button type="button" class="qty__btn" data-step="-1" aria-label="Quitar un paquete de Blanca">−</button>
+                  <output class="qty__val">0</output>
+                  <button type="button" class="qty__btn" data-step="1" aria-label="Agregar un paquete de Blanca">+</button>
+                </div>
               </div>
             </li>
-            <li class="item" data-name="Thüringer" data-price="32000">
-              <div class="item__info">
-                <h4>Thüringer</h4>
-                <p>Ternera y cerdo, con finas hierbas</p>
+            <li class="item card" data-name="Thüringer" data-price="32000" data-group="3" data-order="1">
+              <div class="card__media">
+                <img src="fotos/thuringer.jpg" alt="Paquete al vacío con 3 salchichas Thüringer" width="800" height="800" loading="lazy">
               </div>
-              <p class="item__price">$32.000</p>
-              <div class="qty" role="group" aria-label="Cantidad de Thüringer">
-                <button type="button" class="qty__btn" data-step="-1" aria-label="Quitar un paquete de Thüringer">−</button>
-                <output class="qty__val">0</output>
-                <button type="button" class="qty__btn" data-step="1" aria-label="Agregar un paquete de Thüringer">+</button>
+              <div class="card__body">
+                <h3 class="card__title">Thüringer</h3>
+                <p class="card__desc">Ternera y cerdo, con finas hierbas</p>
+                <p class="card__meta">3 unidades · 150 g c/u</p>
+                <p class="card__price">$32.000</p>
               </div>
-            </li>
-            <li class="item" data-name="Española" data-price="32000">
-              <div class="item__info">
-                <h4>Española</h4>
-                <p>Ternera y cerdo, con suave picante</p>
-              </div>
-              <p class="item__price">$32.000</p>
-              <div class="qty" role="group" aria-label="Cantidad de Española">
-                <button type="button" class="qty__btn" data-step="-1" aria-label="Quitar un paquete de Española">−</button>
-                <output class="qty__val">0</output>
-                <button type="button" class="qty__btn" data-step="1" aria-label="Agregar un paquete de Española">+</button>
+              <div class="card__actions">
+                <button type="button" class="btn btn--blue btn--block card__add">Añadir al carrito</button>
+                <div class="qty" role="group" aria-label="Cantidad de Thüringer" hidden>
+                  <button type="button" class="qty__btn" data-step="-1" aria-label="Quitar un paquete de Thüringer">−</button>
+                  <output class="qty__val">0</output>
+                  <button type="button" class="qty__btn" data-step="1" aria-label="Agregar un paquete de Thüringer">+</button>
+                </div>
               </div>
             </li>
-            <li class="item" data-name="Bockwurst" data-price="30000">
-              <div class="item__info">
-                <h4>Bockwurst</h4>
-                <p>Ternera, cerdo y mostaza</p>
+            <li class="item card" data-name="Española" data-price="32000" data-group="3" data-order="2">
+              <div class="card__media">
+                <img src="fotos/espanola.jpg" alt="Paquete al vacío con 3 salchichas Española" width="800" height="800" loading="lazy">
               </div>
-              <p class="item__price">$30.000</p>
-              <div class="qty" role="group" aria-label="Cantidad de Bockwurst">
-                <button type="button" class="qty__btn" data-step="-1" aria-label="Quitar un paquete de Bockwurst">−</button>
-                <output class="qty__val">0</output>
-                <button type="button" class="qty__btn" data-step="1" aria-label="Agregar un paquete de Bockwurst">+</button>
+              <div class="card__body">
+                <h3 class="card__title">Española</h3>
+                <p class="card__desc">Ternera y cerdo, con suave picante</p>
+                <p class="card__meta">3 unidades · 150 g c/u</p>
+                <p class="card__price">$32.000</p>
+              </div>
+              <div class="card__actions">
+                <button type="button" class="btn btn--blue btn--block card__add">Añadir al carrito</button>
+                <div class="qty" role="group" aria-label="Cantidad de Española" hidden>
+                  <button type="button" class="qty__btn" data-step="-1" aria-label="Quitar un paquete de Española">−</button>
+                  <output class="qty__val">0</output>
+                  <button type="button" class="qty__btn" data-step="1" aria-label="Agregar un paquete de Española">+</button>
+                </div>
               </div>
             </li>
-          </ul>
-        </div>
+            <li class="item card" data-name="Berna" data-price="35000" data-group="3" data-order="3">
+              <div class="card__media">
+                <img src="fotos/berna.jpg" alt="Paquete al vacío con 3 salchichas Berna envueltas en tocineta" width="800" height="800" loading="lazy">
+              </div>
+              <div class="card__body">
+                <h3 class="card__title">Berna</h3>
+                <p class="card__desc">Ternera, cerdo, queso y tocineta</p>
+                <p class="card__meta">3 unidades · 150 g c/u</p>
+                <p class="card__price">$35.000</p>
+              </div>
+              <div class="card__actions">
+                <button type="button" class="btn btn--blue btn--block card__add">Añadir al carrito</button>
+                <div class="qty" role="group" aria-label="Cantidad de Berna" hidden>
+                  <button type="button" class="qty__btn" data-step="-1" aria-label="Quitar un paquete de Berna">−</button>
+                  <output class="qty__val">0</output>
+                  <button type="button" class="qty__btn" data-step="1" aria-label="Agregar un paquete de Berna">+</button>
+                </div>
+              </div>
+            </li>
+            <li class="item card" data-name="Bockwurst" data-price="30000" data-group="3" data-order="4">
+              <div class="card__media">
+                <img src="fotos/bockwurst.jpg" alt="Paquete al vacío con 3 salchichas Bockwurst" width="800" height="800" loading="lazy">
+              </div>
+              <div class="card__body">
+                <h3 class="card__title">Bockwurst</h3>
+                <p class="card__desc">Ternera, cerdo y mostaza</p>
+                <p class="card__meta">3 unidades · 150 g c/u</p>
+                <p class="card__price">$30.000</p>
+              </div>
+              <div class="card__actions">
+                <button type="button" class="btn btn--blue btn--block card__add">Añadir al carrito</button>
+                <div class="qty" role="group" aria-label="Cantidad de Bockwurst" hidden>
+                  <button type="button" class="qty__btn" data-step="-1" aria-label="Quitar un paquete de Bockwurst">−</button>
+                  <output class="qty__val">0</output>
+                  <button type="button" class="qty__btn" data-step="1" aria-label="Agregar un paquete de Bockwurst">+</button>
+                </div>
+              </div>
+            </li>
+            <li class="item card" data-name="Merguez" data-price="40000" data-group="400" data-order="5">
+              <div class="card__media">
+                <img src="fotos/merguez.jpg" alt="Paquete al vacío con salchichas Merguez" width="800" height="800" loading="lazy">
+              </div>
+              <div class="card__body">
+                <h3 class="card__title">Merguez</h3>
+                <p class="card__desc">Cordero y res, en tripa natural de cordero</p>
+                <p class="card__meta">Paquete de 400 g</p>
+                <p class="card__price">$40.000</p>
+              </div>
+              <div class="card__actions">
+                <button type="button" class="btn btn--blue btn--block card__add">Añadir al carrito</button>
+                <div class="qty" role="group" aria-label="Cantidad de Merguez" hidden>
+                  <button type="button" class="qty__btn" data-step="-1" aria-label="Quitar un paquete de Merguez">−</button>
+                  <output class="qty__val">0</output>
+                  <button type="button" class="qty__btn" data-step="1" aria-label="Agregar un paquete de Merguez">+</button>
+                </div>
+              </div>
+            </li>
+            <li class="item card" data-name="La Macha" data-price="26000" data-group="400" data-order="6">
+              <div class="card__media">
+                <img src="fotos/la-macha.jpg" alt="Paquete al vacío con 4 salchichas La Macha" width="800" height="800" loading="lazy">
+              </div>
+              <div class="card__body">
+                <h3 class="card__title">La Macha</h3>
+                <p class="card__desc">100 % cerdo magro</p>
+                <p class="card__meta">4 unidades · 100 g c/u</p>
+                <p class="card__price">$26.000</p>
+              </div>
+              <div class="card__actions">
+                <button type="button" class="btn btn--blue btn--block card__add">Añadir al carrito</button>
+                <div class="qty" role="group" aria-label="Cantidad de La Macha" hidden>
+                  <button type="button" class="qty__btn" data-step="-1" aria-label="Quitar un paquete de La Macha">−</button>
+                  <output class="qty__val">0</output>
+                  <button type="button" class="qty__btn" data-step="1" aria-label="Agregar un paquete de La Macha">+</button>
+                </div>
+              </div>
+            </li>
+            <li class="item card" data-name="La Macha Ahumada" data-price="30000" data-group="400" data-order="7">
+              <div class="card__media">
+                <div class="card__nophoto">
+                  <img src="logo-mark.png" alt="" width="256" height="256" loading="lazy">
+                  <span>Foto próximamente</span>
+                </div>
+              </div>
+              <div class="card__body">
+                <h3 class="card__title">La Macha Ahumada</h3>
+                <p class="card__desc">100 % cerdo magro, ahumada</p>
+                <p class="card__meta">4 unidades · 100 g c/u</p>
+                <p class="card__price">$30.000</p>
+              </div>
+              <div class="card__actions">
+                <button type="button" class="btn btn--blue btn--block card__add">Añadir al carrito</button>
+                <div class="qty" role="group" aria-label="Cantidad de La Macha Ahumada" hidden>
+                  <button type="button" class="qty__btn" data-step="-1" aria-label="Quitar un paquete de La Macha Ahumada">−</button>
+                  <output class="qty__val">0</output>
+                  <button type="button" class="qty__btn" data-step="1" aria-label="Agregar un paquete de La Macha Ahumada">+</button>
+                </div>
+              </div>
+            </li>
+        </ul>
 
         <p class="note">Los valores <strong>no incluyen domicilio</strong>.</p>
       </div>
@@ -251,7 +329,7 @@
         </header>
 
         <ol class="steps">
-          <li><span class="steps__n">1</span><div><strong>Elige</strong> tus salchichas y cuántos paquetes quieres del <a href="#menu">menú</a>.</div></li>
+          <li><span class="steps__n">1</span><div><strong>Elige</strong> tus salchichas y cuántos paquetes quieres en la <a href="#tienda">tienda</a>.</div></li>
           <li><span class="steps__n">2</span><div><strong>Escríbenos por WhatsApp</strong> al <strong>317 664 5184</strong> con tu pedido, tu nombre y la dirección de entrega.</div></li>
           <li><span class="steps__n">3</span><div><strong>Paga</strong> con Nequi o Daviplata.</div></li>
         </ol>
@@ -260,7 +338,7 @@
           <div class="order__summary">
             <h3>Tu pedido</h3>
             <ul class="order__lines" id="orderLines"></ul>
-            <p class="order__empty" id="orderEmpty">Todavía no has elegido salchichas. Agrégalas desde el <a href="#menu">menú</a> o escribe tu pedido directamente en WhatsApp.</p>
+            <p class="order__empty" id="orderEmpty">Todavía no has elegido salchichas. Agrégalas desde la <a href="#tienda">tienda</a> o escribe tu pedido directamente en WhatsApp.</p>
             <p class="order__total" id="orderTotalRow" hidden>
               <span>Total productos</span><strong id="orderTotal">$0</strong>
             </p>

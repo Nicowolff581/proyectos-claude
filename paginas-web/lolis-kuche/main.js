@@ -26,7 +26,7 @@ const setMenu = (open) => {
 toggle.addEventListener("click", () => setMenu(!topbar.classList.contains("is-open")));
 document.querySelectorAll("#navMenu a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
 
-// ---------- Armar el pedido ----------
+// ---------- Armar el pedido (carrito) ----------
 const items = [...document.querySelectorAll(".item")];
 const cart = new Map(items.map((el) => [el.dataset.name, 0]));
 const lines = document.getElementById("orderLines");
@@ -34,6 +34,8 @@ const empty = document.getElementById("orderEmpty");
 const totalRow = document.getElementById("orderTotalRow");
 const totalEl = document.getElementById("orderTotal");
 const sendBtn = document.getElementById("sendOrder");
+const cartLink = document.getElementById("cartLink");
+const cartCount = document.getElementById("cartCount");
 const form = document.getElementById("orderForm");
 
 const priceOf = (name) => Number(items.find((el) => el.dataset.name === name).dataset.price);
@@ -73,21 +75,80 @@ function render() {
   items.forEach((el) => {
     const q = cart.get(el.dataset.name);
     el.querySelector(".qty__val").textContent = q;
+    el.querySelector(".qty").hidden = q === 0;
+    el.querySelector(".card__add").hidden = q > 0;
     el.classList.toggle("is-picked", q > 0);
   });
+
+  // Carrito del menú superior
+  const count = picked.reduce((sum, [, q]) => sum + q, 0);
+  cartCount.textContent = count;
+  cartLink.setAttribute("aria-label", `Tu carrito: ${count} ${count === 1 ? "artículo" : "artículos"}`);
 
   sendBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(buildMessage())}`;
 }
 
+const bumpCart = () => {
+  cartLink.classList.remove("bump");
+  void cartLink.offsetWidth; // reinicia la animación
+  cartLink.classList.add("bump");
+};
+
 items.forEach((el) => {
+  const name = el.dataset.name;
+  el.querySelector(".card__add").addEventListener("click", () => {
+    cart.set(name, 1);
+    render();
+    bumpCart();
+    el.querySelector('.qty__btn[data-step="1"]').focus();
+  });
   el.querySelectorAll(".qty__btn").forEach((btn) => {
     btn.addEventListener("click", () => {
-      const name = el.dataset.name;
-      cart.set(name, Math.max(0, cart.get(name) + Number(btn.dataset.step)));
+      const step = Number(btn.dataset.step);
+      cart.set(name, Math.max(0, cart.get(name) + step));
       render();
+      if (step > 0) bumpCart();
+      if (cart.get(name) === 0) el.querySelector(".card__add").focus();
     });
   });
 });
+
+// ---------- Filtrar y ordenar la tienda ----------
+const grid = document.getElementById("productGrid");
+const countEl = document.getElementById("shopCount");
+const sortBy = document.getElementById("sortBy");
+const chips = [...document.querySelectorAll(".chip")];
+let filter = "all";
+
+function updateShop() {
+  const sorters = {
+    relevance: (a, b) => a.dataset.order - b.dataset.order,
+    "price-asc": (a, b) => a.dataset.price - b.dataset.price || a.dataset.order - b.dataset.order,
+    "price-desc": (a, b) => b.dataset.price - a.dataset.price || a.dataset.order - b.dataset.order,
+    az: (a, b) => a.dataset.name.localeCompare(b.dataset.name, "es"),
+    za: (a, b) => b.dataset.name.localeCompare(a.dataset.name, "es"),
+  };
+  [...items].sort(sorters[sortBy.value]).forEach((el) => grid.appendChild(el));
+  let shown = 0;
+  items.forEach((el) => {
+    const show = filter === "all" || el.dataset.group === filter;
+    el.hidden = !show;
+    if (show) shown++;
+  });
+  countEl.textContent = `${shown} ${shown === 1 ? "producto" : "productos"}`;
+}
+
+chips.forEach((chip) => {
+  chip.addEventListener("click", () => {
+    filter = chip.dataset.filter;
+    chips.forEach((c) => {
+      c.classList.toggle("is-active", c === chip);
+      c.setAttribute("aria-pressed", String(c === chip));
+    });
+    updateShop();
+  });
+});
+sortBy.addEventListener("change", updateShop);
 form.addEventListener("input", render);
 form.addEventListener("submit", (e) => e.preventDefault());
 render();
