@@ -20,4 +20,4 @@ Página de pedidos de salchichas alemanas. Abre `index.html` en el navegador.
 
 Merguez todavía no tiene foto, así que muestra el logo con «Foto próximamente».
 
-**Para cambiar una foto** (por ejemplo, por la versión sin empaque), guarda la nueva con **el mismo nombre** en esta carpeta. Se ven mejor cuadradas, de unos 800 × 800 píxeles.
+**Para cambiar una foto** (por ejemplo, cuando estén las de la Thüringer y la Española), guarda la nueva con **el mismo nombre** en esta carpeta. Se ven mejor cuadradas, de unos 800 × 800 píxeles.
