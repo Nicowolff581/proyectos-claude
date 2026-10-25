@@ -15,9 +15,9 @@ Página de pedidos de salchichas alemanas. Abre `index.html` en el navegador.
 | `espanola.jpg` | Española |
 | `berna.jpg` | Berna |
 | `bockwurst.jpg` | Bockwurst |
-| `merguez.jpg` | Merguez (el paquete de 5 rojas) |
 | `la-macha.jpg` | La Macha (el paquete de 4) |
+| `la-macha-ahumada.jpg` | La Macha Ahumada (el paquete de 5 rojas) |
 
-La Macha Ahumada todavía no tiene foto: muestra el logo con «Foto próximamente».
+Merguez todavía no tiene foto, así que muestra el logo con «Foto próximamente».
 
-**Para cambiar una foto** (por ejemplo, por la versión con el sticker azul), guarda la nueva con **el mismo nombre** en esta carpeta. Se ven mejor cuadradas, de unos 800 × 800 píxeles.
+**Para cambiar una foto** (por ejemplo, por la versión sin empaque), guarda la nueva con **el mismo nombre** en esta carpeta. Se ven mejor cuadradas, de unos 800 × 800 píxeles.
