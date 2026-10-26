@@ -222,7 +222,7 @@ p{margin:0}
 .verb-text ol{margin:0;padding-left:1.2em;max-width:52ch;display:grid;gap:6px;font-size:var(--step-body);color:var(--ink)}
 .verb-text-inner{background:var(--scrim);padding:22px 24px;max-width:600px}
 .verb-text-inner > p{font-weight:500}
-@media (min-width:960px){.verb-text{padding-bottom:40px}}
+@media (min-width:960px){.verb-text{padding-bottom:40px}.verb-text-inner{max-width:none;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;align-items:start;padding:28px 32px}.verb-text-inner > p{font-family:var(--display);font-size:var(--step-lead);line-height:1.25;font-weight:500}.verb-text ol{max-width:none}}
 
 /* ---------- Opiniones ---------- */
 .reviews{padding:var(--gap) var(--m) 0}
@@ -319,7 +319,7 @@ html:not(.motion) .progress{display:none}
 /* Indicador del filtro */
 .chip{position:relative;isolation:isolate}
 .chip-ind{position:absolute;inset:-2px;border-radius:999px;background:var(--ink);z-index:-1;pointer-events:none}
-.chips.flipping .chip[aria-pressed="true"]{background:transparent}
+.chips.flipping .chip{transition:background-color .2s ease .45s,color .25s ease,transform .3s var(--ease-out)}
 .magnet{transition:background-color .25s ease,color .25s ease,border-color .25s ease}
 /* Motion helpers */
 .js .will-move{will-change:transform}
@@ -890,7 +890,7 @@ html:not(.motion) .progress{display:none}
     document.fonts.ready.then(() => {
       $$(".verb h3").forEach(h => {
         const s = SplitText.create(h, { type: "chars", mask: "chars" });
-        onView(h.parentElement, () => gsap.from(s.chars, { yPercent: 110, rotation: 6, duration: 1.1, ease: "expo.out", stagger: 0.045 }), "top 70%");
+        onView(h, () => gsap.from(s.chars, { yPercent: 110, rotation: 6, duration: 1.1, ease: "expo.out", stagger: 0.045 }));
         gsap.fromTo(h, { scale: 0.9 }, { scale: 1.06, ease: "none", scrollTrigger: { trigger: h.parentElement, start: "top bottom", end: "bottom top", scrub: true } });
       });
     });
