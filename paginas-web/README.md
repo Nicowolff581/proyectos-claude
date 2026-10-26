@@ -6,6 +6,7 @@ Aquí van todas las páginas web que hago para negocios. **Cada negocio tiene su
 |---|---|---|
 | [`nonna-rosa/`](nonna-rosa/) | Nonna Rosa · Cucina Italiana | Restaurante italiano: historia, carta, galería, reseñas y reservas por WhatsApp |
 | [`lolis-kuche/`](lolis-kuche/) | Loli's Küche | Salchichas alemanas: menú con cantidades que arma el pedido por WhatsApp con el total |
+| [`arango-propiedades/`](arango-propiedades/) | Arango Propiedades (demo, datos ficticios) | Agente inmobiliaria en Medellín: propiedades con filtro y precios en COP/USD, guía de barrios, cómo trabajo, opiniones y contacto por WhatsApp. Un solo archivo con las fotos incluidas |
 
 ## Cómo ver una página
 
