@@ -8,6 +8,7 @@ Aquí van todas las páginas web que hago para negocios. **Cada negocio tiene su
 | [`lolis-kuche/`](lolis-kuche/) | Loli's Küche | Salchichas alemanas: menú con cantidades que arma el pedido por WhatsApp con el total |
 | [`arango-propiedades/`](arango-propiedades/) | Arango Propiedades (demo, datos ficticios) | Agente inmobiliaria en Medellín: propiedades con filtro y precios en COP/USD, guía de barrios, cómo trabajo, opiniones y contacto por WhatsApp. Un solo archivo con las fotos incluidas |
 | [`latas-coca-cola/`](latas-coca-cola/) | Coca-Cola en 3D (práctica, no oficial) | Latas 3D con Three.js que giran con el scroll: datos de la lata, eslogan detrás, fila de ocho sabores, preguntas, club y final con podio. Necesita internet para cargar las librerías |
+| [`latas-chispa/`](latas-chispa/) | Chispa Cola 3D (marca inventada) | La misma página de latas 3D con una marca de cola inventada, para poder compartirla con enlace |
 
 ## Cómo ver una página
 
