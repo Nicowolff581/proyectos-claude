@@ -6,7 +6,7 @@
 <title>Arango Propiedades</title>
 <meta name="description" content="Mariana Arango te ayuda a comprar, vender, arrendar o invertir en El Poblado, Laureles, Envigado, Provenza y Llanogrande. Atención en español e inglés.">
 <meta name="theme-color" content="#12110f">
-<script>if (matchMedia("(prefers-reduced-motion: no-preference)").matches) document.documentElement.classList.add("motion");</script>
+<script>(function(){var f=false;try{f=localStorage.getItem("arango-motion")==="on"}catch(e){}window.__forceMotion=f;if(f||matchMedia("(prefers-reduced-motion: no-preference)").matches)document.documentElement.classList.add("motion")})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400;1,6..96,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
@@ -367,6 +367,8 @@ form{display:grid;gap:16px;margin-top:28px}
 .wa-float:hover{transform:scale(1.07);background:#187a42}
 .wa-float:active{transform:scale(.95)}
 .wa-float svg{width:30px;height:30px}
+.motion-toggle{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:50;min-height:48px;padding:0 20px;border:0;border-radius:999px;background:var(--paper);color:var(--paper-ink);font-weight:500;cursor:pointer}
+.motion-toggle:hover{background:#fff}
 
 /* Barra de progreso */
 .progress{position:fixed;top:0;left:0;right:0;height:calc(3px + env(safe-area-inset-top,0px));background:var(--accent);transform:scaleX(0);transform-origin:0 50%;z-index:60;pointer-events:none}
@@ -704,6 +706,7 @@ html:not(.motion) .progress{display:none}
   </div>
 </footer>
 
+<button type="button" class="motion-toggle" id="motion-toggle" hidden>Ver con animaciones</button>
 <aside aria-label="Contacto rápido"><a class="wa-float" href="https://wa.me/573000000000?text=Hola%20Mariana%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener" aria-label="Escribir a Mariana por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg></a></aside>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -837,6 +840,17 @@ html:not(.motion) .progress{display:none}
     a.focus();
   });
 
+  /* Con "reducir movimiento" activo, el visitante puede elegir ver las animaciones igual */
+  const mtoggle = $("#motion-toggle");
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches && hasGsap) {
+    mtoggle.hidden = false;
+    mtoggle.textContent = window.__forceMotion ? "Quitar animaciones" : "Ver con animaciones";
+    mtoggle.addEventListener("click", () => {
+      try { localStorage.setItem("arango-motion", window.__forceMotion ? "off" : "on"); } catch (_) {}
+      location.reload();
+    });
+  }
+
   if (!hasGsap) { document.documentElement.classList.remove("motion"); return; }
   gsap.registerPlugin(ScrollTrigger, SplitText, Flip);
   /* indicador deslizante del filtro */
@@ -845,8 +859,9 @@ html:not(.motion) .progress{display:none}
   ScrollTrigger.config({ ignoreMobileResize: true });
 
   const mm = gsap.matchMedia();
-  mm.add({ motion: "(prefers-reduced-motion: no-preference)", small: "(max-width: 767px)", fine: "(hover: hover) and (pointer: fine)" }, ctx => {
-    const { motion, small, fine } = ctx.conditions;
+  mm.add({ all: "all", motion: "(prefers-reduced-motion: no-preference)", small: "(max-width: 767px)", fine: "(hover: hover) and (pointer: fine)" }, ctx => {
+    const { small, fine } = ctx.conditions;
+    const motion = ctx.conditions.motion || window.__forceMotion;
     if (!motion) return; // movimiento reducido: todo queda quieto y visible
     document.documentElement.classList.add("motion");
 
@@ -1038,7 +1053,7 @@ html:not(.motion) .progress{display:none}
         .to(".ev-full", { autoAlpha: 0, duration: 0.05 }, 0.41)
         .from(".ev-main figcaption", { autoAlpha: 0, y: 10, duration: 0.06 }, 0.44)
         .fromTo(".ev-side", { clipPath: "inset(100% 0% 0% 0%)", yPercent: 25 }, { clipPath: "inset(0% 0% 0% 0%)", yPercent: 0, duration: 0.22, stagger: 0.07, ease: "power2.out" }, 0.48)
-        .from(".ev-note", { autoAlpha: 0, y: 24, duration: 0.12 }, 0.78)
+        .from(".ev-note", { autoAlpha: 0, y: 24, duration: 0.1 }, 0.7)
         .to({}, { duration: 0.08 }, 0.92);
     });
 
